@@ -45,12 +45,6 @@ CORS_ALLOW_HEADERS =  list(default_headers)
 PHONENUMBER_DEFAULT_REGION = 'IN'
 
 
-EMAIL_BACKEND = env("EMAIL_BACKEND")
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env.int("EMAIL_PORT")  # Cast to int
-EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS") 
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 # Application definition
 
@@ -112,7 +106,7 @@ REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
 parsed_url = urlparse.urlparse(REDIS_URL)
 if os.environ.get("DEBUG", "True") == "True":
     print(f"Using Redis at {parsed_url.hostname}:{parsed_url.port}")
-    
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
