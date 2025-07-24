@@ -17,6 +17,7 @@ import environ
 import dj_database_url
 import cloudinary
 import cloudinary_storage
+import urllib.parse
 from datetime import timedelta
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qsl
@@ -102,10 +103,8 @@ TEMPLATES = [
 WSGI_APPLICATION = "chatroom.wsgi.application"
 ASGI_APPLICATION = 'chatroom.asgi.application'
 
-REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
-parsed_url = urlparse.urlparse(REDIS_URL)
-if os.environ.get("DEBUG", "True") == "True":
-    print(f"Using Redis at {parsed_url.hostname}:{parsed_url.port}")
+REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379")
+parsed_url = urllib.parse.urlparse(REDIS_URL)
 
 CHANNEL_LAYERS = {
     "default": {
