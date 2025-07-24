@@ -1,0 +1,65 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migration files
+*/migrations/*.py
+*/migrations/*.pyc
+
+# SQLite and other database files
+*.sqlite3
+*.db
+
+# Environment variables and secrets
+.env
+.env.*
+
+# VSCode and other editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+
+
+# pip virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Logs
+*.log
+
+# Pytest and test cache
+.pytest_cache/
+.coverage
+.tox/
+htmlcov/
+
+
+# Compiled translations
+*.mo
+
+
+# Coverage reports
+coverage.xml
+*.cover
+.hypothesis/
+
+# Celery & other worker-related
+celerybeat-schedule
+celerybeat.pid
+
+# Cloudinary cache if used
+cloudinary/
+
+# Jupyter notebook checkpoints (if using any)
+.ipynb_checkpoints/
+
+# Local settings (if separated)
+local_settings.py
+
+# Gunicorn (if used)
+gunicorn.pid
