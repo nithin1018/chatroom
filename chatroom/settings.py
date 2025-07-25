@@ -103,6 +103,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "chatroom.wsgi.application"
 ASGI_APPLICATION = 'chatroom.asgi.application'
 
+
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379")
 parsed_url = urllib.parse.urlparse(REDIS_URL)
 
@@ -110,7 +111,8 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(parsed_url.hostname, parsed_url.port)],
+            "hosts": [(f"{parsed_url.hostname}", parsed_url.port)],
+            "password": parsed_url.password or None,  # Add password if needed
         },
     },
 }
