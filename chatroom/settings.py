@@ -42,7 +42,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 # CORS for sharing the code
 CORS_ALLOW_ALL_ORGINS = True
-CORS_ALLOW_CREDENTIAL = False
+CORS_ALLOW_CREDENTIALS = False
 CORS_ALLOW_HEADERS =  list(default_headers)
 PHONENUMBER_DEFAULT_REGION = 'IN'
 
@@ -75,13 +75,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    
 ]
 
 ROOT_URLCONF = "chatroom.urls"
