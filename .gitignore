@@ -1,65 +1,105 @@
-# Python bytecode files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Django migration files
-*/migrations/*.py
-*/migrations/*.pyc
+# C extensions
+*.so
 
-# SQLite and other database files
-*.sqlite3
-*.db
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+db.sqlite3-journal
 
-# Environment variables and secrets
+# Django secret settings
 .env
 .env.*
 
-# VSCode and other editor files
+# Media and static files (optional - only if generated)
+media/
+staticfiles/
+
+# If you're using Django collectstatic
+/static/
+
+# VSCode settings
 .vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
 
-
-
-# pip virtual environment
+# pip environment
 venv/
-ENV/
 env/
+ENV/
 .venv/
+.idea/
 
-# Logs
-*.log
+# macOS
+.DS_Store
 
-# Pytest and test cache
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# PyCharm
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
 .pytest_cache/
-.coverage
-.tox/
-htmlcov/
-
-
-# Compiled translations
-*.mo
-
 
 # Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
 coverage.xml
 *.cover
-.hypothesis/
+*.py,cover
 
-# Celery & other worker-related
+# Sphinx documentation
+docs/_build/
+
+# Build artifacts
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / test logs
+.tox/
+noxfile.py
+.cache/
+pytest.ini
+
+# Celery
 celerybeat-schedule
 celerybeat.pid
 
-# Cloudinary cache if used
-cloudinary/
+# dotenv
+*.env
+*.env.*
 
-# Jupyter notebook checkpoints (if using any)
-.ipynb_checkpoints/
-
-# Local settings (if separated)
-local_settings.py
-
-# Gunicorn (if used)
-gunicorn.pid
+# Git
+*.orig
