@@ -2,11 +2,12 @@ services:
   - type: web
     name: django-websocket-app
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "daphne -b 0.0.0.0 -p $PORT your_project.asgi:application"
+    buildCommand: pip install -r requirements.txt && python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput
+    startCommand: daphne -b 0.0.0.0 -p $PORT chatroom.asgi:application
+
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: your_project.settings
+        value: chatroom.settings
       - key: REDIS_URL
         fromService:
           name: redis
