@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+import logging
 from corsheaders.defaults import default_headers
 import environ
 import dj_database_url
@@ -118,19 +119,23 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-if os.getenv('RENDER') == 'TRUE':
+tmpPostgres = urlparse(os.getenv("DATABASE_URL", ""))
+
+if os.getenv('RENDER') is not None:
+    print("✅ Using Render Database")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': tmpPostgres.path.replace('/', ''),
+            'NAME': tmpPostgres.path[1:],  # remove leading slash
             'USER': tmpPostgres.username,
             'PASSWORD': tmpPostgres.password,
             'HOST': tmpPostgres.hostname,
-            'PORT': 5432,
+            'PORT': tmpPostgres.port or 5432,
             'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
         }
-}
+    }
 else:
+    print("⚙️ Using Local Database")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -141,6 +146,9 @@ else:
             'PORT': '5432',
         }
     }
+logger = logging.getLogger(__name__)
+print("🔧 DATABASE CONFIG IN USE:", DATABASES['default'])
+
 
 
 # Password validation
