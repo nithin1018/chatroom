@@ -40,8 +40,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CORS for sharing the code
-CORS_ALLOW_ALL_ORGINS = True
+CORS_ALLOW_ALL_ORGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  
+]
 CORS_ALLOW_CREDENTIALS = False
 CORS_ALLOW_HEADERS =  list(default_headers)
 PHONENUMBER_DEFAULT_REGION = 'IN'
@@ -82,7 +84,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
 ]
 
 ROOT_URLCONF = "chatroom.urls"
@@ -122,7 +123,6 @@ CHANNEL_LAYERS = {
 
 tmpPostgres = urlparse(os.getenv("DATABASE_URL", ""))
 if os.getenv('RENDER') is not None:
-    print("✅ Using Render Database")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -135,7 +135,6 @@ if os.getenv('RENDER') is not None:
         }
     }
 else:
-    print("⚙️ Using Local Database")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -146,8 +145,6 @@ else:
             'PORT': '5432',
         }
     }
-logger = logging.getLogger(__name__)
-print("🔧 DATABASE CONFIG IN USE:", DATABASES['default'])
 
 
 
