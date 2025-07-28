@@ -5,6 +5,7 @@ from rest_framework.validators import ValidationError
 from rest_framework.exceptions import ErrorDetail
 from .models import Profile
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -57,3 +58,11 @@ class RegisterProfileSerializer(serializers.ModelSerializer):
 
         return profile
 
+class CustomTokenObtainPairView(TokenObtainPairView):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['username'] = user.username
+        token['first_name'] = user.profile.first_name
+        token['last_name'] = user.profile.last_name
+        return token
