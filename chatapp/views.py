@@ -24,7 +24,8 @@ class MessageListCreateView(generics.ListCreateAPIView):
 class RoomListView(generics.ListAPIView):
     serializer_class = serializers.RoomNameSerializer
     permission_classes = [IsAuthenticated]
-    queryset=Message.objects.all()
+    def get_queryset(self):
+        return Message.objects.values('room_name').distinct()
 
     
 

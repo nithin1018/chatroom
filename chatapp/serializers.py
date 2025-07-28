@@ -14,9 +14,7 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class RoomNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Message
-        fields = ['room_name']
+    room_name = serializers.CharField()
 
 class RegisterProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(write_only=True)
