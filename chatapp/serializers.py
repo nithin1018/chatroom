@@ -13,6 +13,10 @@ class MessageSerializer(serializers.ModelSerializer):
         model = Message
         fields = "__all__"
 
+class RoomNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = ['room_name']
 
 class RegisterProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(write_only=True)

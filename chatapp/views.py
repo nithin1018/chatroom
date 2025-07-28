@@ -21,6 +21,12 @@ class MessageListCreateView(generics.ListCreateAPIView):
         room = self.kwargs['room_name']
         return Message.objects.filter(room_name=room).order_by('timestamp')
     
+class RoomListView(generics.ListAPIView):
+    serializer_class = serializers.RoomNameSerializer
+    permission_classes = [IsAuthenticated]
+    queryset=Message.objects.all()
+
+    
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = [serializers.CustomTokenObtainPairView]
-    
