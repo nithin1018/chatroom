@@ -30,4 +30,4 @@ class RoomListView(generics.ListAPIView):
     
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = [serializers.CustomTokenObtainPairView]
+    serializer_class = serializers.CustomTokenObtainPairView
