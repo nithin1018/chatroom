@@ -46,6 +46,9 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_CREDENTIALS = False
 CORS_ALLOW_HEADERS =  list(default_headers)
+CSRF_TRUSTED_ORIGINS = [
+    'https://chatroom-rwgp.onrender.com',
+]
 PHONENUMBER_DEFAULT_REGION = 'IN'
 
 
