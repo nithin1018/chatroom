@@ -13,7 +13,7 @@ class MessageSerializer(serializers.ModelSerializer):
         model = Message
         fields = "__all__"
 
-class RoomNameSerializer(serializers.ModelSerializer):
+class RoomNameSerializer(serializers.Serializer):
     room_name = serializers.CharField()
 
 class RegisterProfileSerializer(serializers.ModelSerializer):

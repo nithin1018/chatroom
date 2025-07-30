@@ -12,9 +12,10 @@ class Profile(models.Model):
     
 class Message(models.Model):
     room_name = models.CharField(max_length=100)
-    user = models.CharField(max_length=50)
+    sender = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name="sent",default=1)
+    reciever = models.ForeignKey(Profile,on_delete=models.CASCADE,blank=True,null=True,related_name="recieved")
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"[{self.room_name}] {self.user}: {self.content[:20]}"
+        return f"[{self.room_name}] {self.sender}: {self.content[:20]}"
