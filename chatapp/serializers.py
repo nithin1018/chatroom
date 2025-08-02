@@ -60,7 +60,7 @@ class RegisterProfileSerializer(serializers.ModelSerializer):
 
         return profile
 
-class CustomTokenObtainPairView(TokenObtainPairSerializer):
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
